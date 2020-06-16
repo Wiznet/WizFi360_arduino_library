@@ -72,7 +72,7 @@ Hardware 설정 후, USB Type-B Cable을 이용하여 Arduino Mega 2560을 Deskt
 
 ![][link-device_management]
 
-> Arduino IDE를 정상적으로 설치를 하였다면 위와 같이 장치 관리자에서 COM 포트를 확인할 수 있습니다.
+> Arduino IDE를 정상적으로 설치를 하였다면 위와 같이 장치 관리자에서 COM Port를 확인 할 수 있습니다.
 >
 > 장치 관리자에서 COM Port를 확인 할 수 없는 경우, 다음 Link의 설명에 따라 설정 바랍니다.
 >
@@ -139,7 +139,7 @@ Terminal Program으로 WizFi360가 AP(무선 공유기)에 접속하고, SSID, B
 [link-web_server]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/WebServer/WebServer.ino
 [link-web_server_ap]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/WebServerAP/WebServerAP.ino
 [link-web_server_led]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/WebServerLed/WebServerLed.ino
-[link-wizfi360-evb-shield]: https://wizwiki.net/wiki/doku.php/products:wizfi360:start
+[link-wizfi360-evb-shield]: https://wizwiki.net/wiki/doku.php/products:wizfi360:board:wizfi360-evb:start
 [link-arduino_mega_2560]: https://store.arduino.cc/usa/mega-2560-r3
 [link-required_item]: https://github.com/GiungKim/images/blob/master/wizfi360_arduino_nepes/required_item.png
 [link-arduino_ide_download]: https://www.arduino.cc/en/main/software
