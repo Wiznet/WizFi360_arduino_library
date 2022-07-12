@@ -10,15 +10,26 @@
 
 #include "WizFi360.h"
 
+// setup according to the device you use
+#define ARDUINO_MEGA_2560
+
 // Emulate Serial1 on pins 6/7 if not present
 #ifndef HAVE_HWSERIAL1
 #include "SoftwareSerial.h"
+#if defined(ARDUINO_MEGA_2560)
 SoftwareSerial Serial1(6, 7); // RX, TX
+#elif defined(WIZFI360_EVB_PICO)
+SoftwareSerial Serial2(6, 7); // RX, TX
+#endif
 #endif
 
 /* Baudrate */
 #define SERIAL_BAUDRATE   115200
+#if defined(ARDUINO_MEGA_2560)
 #define SERIAL1_BAUDRATE  115200
+#elif defined(WIZFI360_EVB_PICO)
+#define SERIAL2_BAUDRATE  115200
+#endif
 
 /* Sensor */
 #define DHTTYPE DHT11
@@ -47,18 +58,26 @@ WiFiClient client;
 // Initialize the DHT object
 DHT dht(DHTPIN, DHTTYPE); 
 
-void setup() {              
+void setup() {
   //initialize sensor
   pinMode(CDSPIN, INPUT);
   dht.begin();
-  
+
   // initialize serial for debugging
   Serial.begin(SERIAL_BAUDRATE);
   // initialize serial for WizFi360 module
+#if defined(ARDUINO_MEGA_2560)
   Serial1.begin(SERIAL1_BAUDRATE);
+#elif defined(WIZFI360_EVB_PICO)
+  Serial2.begin(SERIAL2_BAUDRATE);
+#endif
   // initialize WizFi360 module
+#if defined(ARDUINO_MEGA_2560)
   WiFi.init(&Serial1);
-  
+#elif defined(WIZFI360_EVB_PICO)
+  WiFi.init(&Serial2);
+#endif
+
   // check for the presence of the shield
   if (WiFi.status() == WL_NO_SHIELD) {
     Serial.println("WiFi shield not present");
@@ -82,8 +101,7 @@ void setup() {
   thingspeakTrans();
 }
 
-void loop()
-{
+void loop() {
   // if there's incoming data from the net connection send it out the serial port
   // this is for debugging purposes only   
   while (client.available()) {
@@ -102,7 +120,7 @@ void loop()
 }
 
 // Read sendsor value
-void sensorRead(){
+void sensorRead() {
   float cdsValue= analogRead(CDSPIN);
   float tempValue=dht.readTemperature();
   float humiValue=dht.readHumidity();
@@ -118,8 +136,7 @@ void sensorRead(){
 }
 
 //Transmitting sensor value to thingspeak
-void thingspeakTrans()
-{
+void thingspeakTrans() {
   // close any connection before send a new request
   // this will free the socket on the WiFi shield
   client.stop();
@@ -147,8 +164,7 @@ void thingspeakTrans()
   }
 }
 
-void printWifiStatus()
-{
+void printWifiStatus() {
   // print the SSID of the network you're attached to
   Serial.print("SSID: ");
   Serial.println(WiFi.SSID());

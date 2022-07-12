@@ -9,15 +9,26 @@
 
 #include "WizFi360.h"
 
+// setup according to the device you use
+#define ARDUINO_MEGA_2560
+
 // Emulate Serial1 on pins 6/7 if not present
 #ifndef HAVE_HWSERIAL1
 #include "SoftwareSerial.h"
+#if defined(ARDUINO_MEGA_2560)
 SoftwareSerial Serial1(6, 7); // RX, TX
+#elif defined(WIZFI360_EVB_PICO)
+SoftwareSerial Serial2(6, 7); // RX, TX
+#endif
 #endif
 
 /* Baudrate */
 #define SERIAL_BAUDRATE   115200
+#if defined(ARDUINO_MEGA_2560)
 #define SERIAL1_BAUDRATE  115200
+#elif defined(WIZFI360_EVB_PICO)
+#define SERIAL2_BAUDRATE  115200
+#endif
 
 /* Wi-Fi info */
 char ssid[] = "wiznet";       // your network SSID (name)
@@ -32,17 +43,24 @@ WiFiServer server(80);
 // use a ring buffer to increase speed and reduce memory allocation
 RingBuffer buf(8);
 
-void setup()
-{
+void setup() {
   // initialize digital pin LED_BUILTIN as an output.
-  pinMode(LED_BUILTIN, OUTPUT);	
+  pinMode(LED_BUILTIN, OUTPUT);
 
   // initialize serial for debugging
-  Serial.begin(SERIAL_BAUDRATE);  
+  Serial.begin(SERIAL_BAUDRATE);
   // initialize serial for WizFi360 module
+#if defined(ARDUINO_MEGA_2560)
   Serial1.begin(SERIAL1_BAUDRATE);
+#elif defined(WIZFI360_EVB_PICO)
+  Serial2.begin(SERIAL2_BAUDRATE);
+#endif
   // initialize WizFi360 module
-  WiFi.init(&Serial1);    
+#if defined(ARDUINO_MEGA_2560)
+  WiFi.init(&Serial1);
+#elif defined(WIZFI360_EVB_PICO)
+  WiFi.init(&Serial2);
+#endif
 
   // check for the presence of the shield
   if (WiFi.status() == WL_NO_SHIELD) {
@@ -66,8 +84,7 @@ void setup()
   server.begin();
 }
 
-void loop()
-{
+void loop() {
   WiFiClient client = server.available();  // listen for incoming clients
 
   if (client) {                               // if you get a client,
@@ -109,8 +126,7 @@ void loop()
   }
 }
 
-void sendHttpResponse(WiFiClient client)
-{
+void sendHttpResponse(WiFiClient client) {
   // HTTP headers always start with a response code (e.g. HTTP/1.1 200 OK)
   // and a content-type so the client knows what's coming, then a blank line:
   client.println("HTTP/1.1 200 OK");
@@ -130,8 +146,7 @@ void sendHttpResponse(WiFiClient client)
   client.println();
 }
 
-void printWifiStatus()
-{
+void printWifiStatus() {
   // print the SSID of the network you're attached to
   Serial.print("SSID: ");
   Serial.println(WiFi.SSID());

@@ -9,15 +9,26 @@
 #include "WizFi360.h"
 #include "WizFi360Udp.h"
 
+// setup according to the device you use
+#define ARDUINO_MEGA_2560
+
 // Emulate Serial1 on pins 6/7 if not present
 #ifndef HAVE_HWSERIAL1
 #include "SoftwareSerial.h"
+#if defined(ARDUINO_MEGA_2560)
 SoftwareSerial Serial1(6, 7); // RX, TX
+#elif defined(WIZFI360_EVB_PICO)
+SoftwareSerial Serial2(6, 7); // RX, TX
+#endif
 #endif
 
 /* Baudrate */
 #define SERIAL_BAUDRATE   115200
+#if defined(ARDUINO_MEGA_2560)
 #define SERIAL1_BAUDRATE  115200
+#elif defined(WIZFI360_EVB_PICO)
+#define SERIAL2_BAUDRATE  115200
+#endif
 
 /* Wi-Fi info */
 char ssid[] = "wiznet";       // your network SSID (name)
@@ -36,9 +47,17 @@ void setup() {
   // initialize serial for debugging
   Serial.begin(SERIAL_BAUDRATE);
   // initialize serial for WizFi360 module
+#if defined(ARDUINO_MEGA_2560)
   Serial1.begin(SERIAL1_BAUDRATE);
+#elif defined(WIZFI360_EVB_PICO)
+  Serial2.begin(SERIAL2_BAUDRATE);
+#endif
   // initialize WizFi360 module
+#if defined(ARDUINO_MEGA_2560)
   WiFi.init(&Serial1);
+#elif defined(WIZFI360_EVB_PICO)
+  WiFi.init(&Serial2);
+#endif
 
   // check for the presence of the shield:
   if (WiFi.status() == WL_NO_SHIELD) {
@@ -67,7 +86,6 @@ void setup() {
 }
 
 void loop() {
-
   // if there's data available, read a packet
   int packetSize = Udp.parsePacket();
   if (packetSize) {

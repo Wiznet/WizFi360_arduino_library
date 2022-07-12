@@ -43,14 +43,14 @@ WiFiClient::WiFiClient(uint8_t sock) : _sock(sock)
 // this is very slow on WizFi360
 size_t WiFiClient::print(const __FlashStringHelper *ifsh)
 {
-	printFSH(ifsh, false);
+    return printFSH(ifsh, false);
 }
 
 // if we do override this, the standard println will call the print
 // method twice
 size_t WiFiClient::println(const __FlashStringHelper *ifsh)
 {
-	printFSH(ifsh, true);
+    return printFSH(ifsh, true);
 }
 
 
