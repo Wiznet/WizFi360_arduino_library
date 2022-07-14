@@ -1,6 +1,6 @@
 # Getting Started with WizFi360 Arduino Library & Examples
 
-This document will guide you through a series of steps from configuring development environment to running Arduino library and examples using the WIZnet's Wi-Fi products, [**WizFi360**][link-wizfi360].
+This document will guide through a series of steps from configuring development environment to running Arduino library and examples using the WIZnet's Wi-Fi product - [**WizFi360**][link-wizfi360].
 
 - [**Development environment configuration**](#development_environment_configuration)
 - [**Hardware requirements**](#hardware_requirements)
@@ -16,7 +16,7 @@ This document will guide you through a series of steps from configuring developm
 
 To test the WizFi360 Arduino library & examples, the development environment must be configured to use Arduino platform.
 
-Please refer to the WizFi360 Arduino library & examples configured and tested the development environment using **Arduino IDE** in **Windows**.
+Please note that in this guide examples were configured and tested using **Arduino IDE** in **Windows** environment.
 
 Before starting, download and install the Arduino IDE from the link below.
 
@@ -24,13 +24,13 @@ Before starting, download and install the Arduino IDE from the link below.
 
 Additionally, if you are using WizFi360-EVB-Pico rather than WizFi360-EVB-Shield & Arduino Mega 2560, minor settings are required in the Arduino IDE.
 
-It is a package addition to use the evaluation board based on RP2040, and setup as follows.
+It is necessary to add a package to use the evaluation board based on RP2040, and follows below steps to setup.
 
 1. Run the Arduino IDE
 
-2. Open Preference
+2. Open Preferences
 
-3. Add the following link to Addtional Boards Manager URLs
+3. Add next link to Addtional Boards Manager URLs
 
 ```
 https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
@@ -45,15 +45,13 @@ https://github.com/earlephilhower/arduino-pico/releases/download/global/package_
 <a name="hardware_requirements"></a>
 ## Hardware requirements
 
-WizFi360 Arduino Library & Examples supports two directions.
-
-The first is to use **WizFi360-EVB-Shield** & **Arduino Mega 2560**, and the second is to use **WizFi360-EVB-Pico**.
+WizFi360 Arduino Library & Examples supports two boards: **WizFi360-EVB-Shield**/**Arduino Mega 2560** and **WizFi360-EVB-Pico**.
 
 With the WizFi360-EVB-Shield & Arduino Mega 2560, WizFi360-EVB-Shield is a development board for experiment, test and verification of WizFi360. WizFi360-EVB-Shield can also be used as an Arduino shield.
 
-The other direction, WizFi360-EVB-Pico, is based on Raspberry Pi RP2040 and adds Wi-Fi connectivity using WizFi360. It is pin compatible with Raspberry Pi Pico board and can be used for IoT Solution development.
+The other board, WizFi360-EVB-Pico, is based on Raspberry Pi RP2040 and adds Wi-Fi connectivity using WizFi360. It is pin compatible with Raspberry Pi Pico board and can be used for IoT Solution development.
 
-For detailed information about each board, refer to the link below.
+For detailed information about each board, refer to the links below.
 
 - [**WizFi360-EVB-Shield**][link-wizfi360-evb-shield] & [**Arduino Mega 2560**][link-arduino_mega_2560]
 
@@ -87,7 +85,7 @@ Examples are available at `WizFi360_arduino_library/examples/` directory. As of 
 <a name="example_testing"></a>
 ## Example testing
 
-This section guides you through tesing with ConnectWPA example as an example using WizFi360-EVB-Shield & Arduino Mega 2560 or WizFi360-EVB-Pico.
+This section will guide through testing with ConnectWPA example as an example using WizFi360-EVB-Shield & Arduino Mega 2560 or WizFi360-EVB-Pico.
 
 
 
