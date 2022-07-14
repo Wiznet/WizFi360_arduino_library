@@ -1,155 +1,280 @@
-# WizFi360 Arduino Library
+# Getting Started with WizFi360 Arduino Library & Examples
 
-## 목차
+This document will guide you through a series of steps from configuring development environment to running Arduino library and examples using the WIZnet's Wi-Fi products, [**WizFi360**][link-wizfi360].
 
-- [소개](#Introduction)
-- [Step 1: 필수 구성 요소](#Prerequisites)
-- [Step 2: Device 준비](#Prepare_Device)
-- [Step 3: 동작 예제](#Example)
-- [Step 4: 동작 예제 결과](#Result)
-
-
-
-<a name="Introduction"></a>
-## 소개
-WizFi360 Arduino Library는 Arduino에 WizFi360을 결합하여 쉽게 사용 할 수 있도록 Library 및 Example을 제공합니다.
-
-제공하는 Example은 다음과 같습니다.
-
-- [ConnectWPA][link-connect_wpa]
-- [ScanNetworks][link-scan_networks]
-- [Thingspeak][link-thing_speak]
-- [UdpNTPClient][link-udp_ntp_client]
-- [UdpSendReceive][link-udp_send_receive]
-- [WebClient][link-web_client]
-- [WebClientRepeating][link-web_client_repeating]
-- [WebClientSSL][link-web_client_ssl]
-- [WebServer][link-web_server]
-- [WebServerAP][link-web_server_ap]
-- [WebServerLed][link-web_server_led]
+- [**Development environment configuration**](#development_environment_configuration)
+- [**Hardware requirements**](#hardware_requirements)
+- [**Examples**](#examples)
+- [**Example testing**](#example_testing)
+    - [**Using WizFi360-EVB-Shield & Arduino Mega 2560**](#using_wizfi360_evb_shield_arduino_mega_2560)
+    - [**Using WizFi360-EVB-Pico**](#using_wizfi360_evb_pico)
 
 
 
-<a name="Prerequisites"></a>
-## Step 1: 필수 구성 요소
+<a name="development_environment_configuration"></a>
+## Development environment configuration
 
-본 문서를 따라하기 전에 다음 항목이 준비되어야 합니다.
+To test the WizFi360 Arduino library & examples, the development environment must be configured to use Arduino platform.
 
-**Hadrware**
- - Desktop or Laptop Computer
- - [WizFi360-EVB-Shield][link-wizfi360-evb-shield]
- - [Arduino Mega 2560][link-arduino_mega_2560]
- - USB Type-B Cable
+Please refer to the WizFi360 Arduino library & examples configured and tested the development environment using **Arduino IDE** in **Windows**.
 
- ![][link-required_item]
+Before starting, download and install the Arduino IDE from the link below.
 
-**Software**
- - [Arduino IDE][link-arduino_ide_download]
- - Serial Terminal (TeraTerm, Hercules, etc . . .)
+- [Arduino IDE][link-arduino_ide]
 
+Additionally, if you are using WizFi360-EVB-Pico rather than WizFi360-EVB-Shield & Arduino Mega 2560, minor settings are required in the Arduino IDE.
 
+It is a package addition to use the evaluation board based on RP2040, and setup as follows.
 
-<a name="Prepare_Device"></a>
-## Step 2: Device 준비
+1. Run the Arduino IDE
 
-**1. Hardware 준비**
+2. Open Preference
 
-WizFi360-EVB-Shield는 Arduino Mega 2560과 결합을 하여 사용합니다. 따라서 WizFi360-EVB-Shield의 DIP Switch 설정 및 Jumper Cable 연결이 다음과 같이 필요합니다.
+3. Add the following link to Addtional Boards Manager URLs
 
-> * SW1 : Off
-> * SW2 : Off
-> * SW3 : On
-> * WizFi360-EVB-Shield : D7 - Arduino Mega 2560 : 18
-> * WizFi360-EVB-Shield : D6 - Arduino Mega 2560 : 19
+```
+https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+```
 
-![][link-set_wizfi360_evb_shield_dip_switch_and_connect_arduino_mega_2560]
+![][link-add_boards_manager_urls]
 
-**2. Device 연결**
-
-Hardware 설정 후, USB Type-B Cable을 이용하여 Arduino Mega 2560을 Desktop 혹은 Laptop Computer와 연결을 합니다.
-
-장치 관리자에서 Arduino Mega 2560과 연결된 COM Port를 확인 할 수 있습니다.
-
-![][link-device_management]
-
-> Arduino IDE를 정상적으로 설치를 하였다면 위와 같이 장치 관리자에서 COM Port를 확인 할 수 있습니다.
->
-> 장치 관리자에서 COM Port를 확인 할 수 없는 경우, 다음 Link의 설명에 따라 설정 바랍니다.
->
-> * [Manually install Drivers on Windows][link-manually_install_drivers_on_windows]
+4. Click the OK button to complete the setup
 
 
 
-<a name="Example"></a>
-## Step 3: 동작 예제
+<a name="hardware_requirements"></a>
+## Hardware requirements
 
-※ 본 문서는 ConnectWPA Example로 진행합니다.
+WizFi360 Arduino Library & Examples supports two directions.
 
-**1. WizFi360 Arduino Library Download 및 Example 실행**
+The first is to use **WizFi360-EVB-Shield** & **Arduino Mega 2560**, and the second is to use **WizFi360-EVB-Pico**.
 
-WizFi360 Arduino Library Download를 한 후, 실행하고자 하는 Example의 .ino 확장자를 선택하여 Project 실행합니다.
+With the WizFi360-EVB-Shield & Arduino Mega 2560, WizFi360-EVB-Shield is a development board for experiment, test and verification of WizFi360. WizFi360-EVB-Shield can also be used as an Arduino shield.
 
-> * [WizFi360 Arduino Library][link-wizFi360 arduino library_download]
+The other direction, WizFi360-EVB-Pico, is based on Raspberry Pi RP2040 and adds Wi-Fi connectivity using WizFi360. It is pin compatible with Raspberry Pi Pico board and can be used for IoT Solution development.
 
-**2. Parameter 값 수정**
+For detailed information about each board, refer to the link below.
 
-※ 본 문서는 Debugging을 위한 Serial, WizFi360과 통신을 위한 Serial의 Baudrate를 기존 설정 115,200으로 진행을 합니다.
+- [**WizFi360-EVB-Shield**][link-wizfi360-evb-shield] & [**Arduino Mega 2560**][link-arduino_mega_2560]
 
-AP(무선 공유기)에 연결하기 위하여, 다음의 Parameter를 수정합니다.
+![][link-wizfi360-evb-shield_arduino_mega_2560_main]
+
+- [**WizFi360-EVB-Pico**][link-wizfi360-evb-pico]
+
+![][link-wizfi360-evb-pico_main]
+
+
+
+<a name="examples"></a>
+## Examples
+
+Examples are available at `WizFi360_arduino_library/examples/` directory. As of now, following examples are provided.
+
+- [**ConnectWPA**][link-connectwpa]
+- [**ScanNetworks**][link-scannetworks]
+- [**Thingspeak**][link-thingspeak]
+- [**UdpNTPClient**][link-udpntpclient]
+- [**UdpSendReceive**][link-udpsendreceive]
+- [**WebClient**][link-webclient]
+- [**WebClientRepeating**][link-webclientrepeating]
+- [**WebClientSSL**][link-webclientssl]
+- [**WebServer**][link-webserver]
+- [**WebServerAP**][link-webserverap]
+- [**WebServerLed**][link-webserverled]
+
+
+
+<a name="example_testing"></a>
+## Example testing
+
+This section guides you through tesing with ConnectWPA example as an example using WizFi360-EVB-Shield & Arduino Mega 2560 or WizFi360-EVB-Pico.
+
+
+
+<a name="using_wizfi360_evb_shield_arduino_mega_2560"></a>
+### Using WizFi360-EVB-Shield & Arduino Mega 2560
+
+
+
+#### Step 1: Prepare software
+
+The following serial terminal program is required for example test, download and install from below link.
+
+- [**Tera Term**][link-tera_term]
+
+
+
+#### Step 2: Prepare hardware
+
+1. Combine WizFi360-EVB-Shield with Arduino Mega 2560.
+
+2. Setup DIP switch on WizFi360-EVB-Shield.
+
+- SW1 : Off
+- SW2 : Off
+- SW3 : On
+
+3. Connect WizFi360-EVB-Shield and Arduino Mega 2560 with jumper cable.
+
+- WizFi360-EVB-Shield : D7 - Arduino Mega 2560 : 18
+- WizFi360-EVB-Shield : D6 - Arduino Mega 2560 : 19
+
+![][link-connect_wizfi360-evb-shield_and_arduino_mega_2560_with_jumper_cable]
+
+4. Connect Arduino Mega 2560 to desktop or laptop using USB type B cable.
+
+
+
+#### Step 3: Setup Example
+
+To test the example, minor settings shall be done in code.
+
+1. Setup device setting according to device you use.
+
+Serial port configuration is different depending on the board used.
+
+- Arduino Mega 2560 : ARDUINO_MEGA_2560
+- WizFi360-EVB-Pico : WIZFI360_EVB_PICO
+
+```cpp
+// setup according to the device you use
+#define ARDUINO_MEGA_2560
+```
+
+2. Setup Wi-Fi configuration.
 
 ```cpp
 /* Wi-Fi info */
-char ssid[] = "xxxxxxxxxx";   // your network SSID (name)
-char pass[] = "xxxxxxxxxx";   // your network password
+char ssid[] = "wiznet";       // your network SSID (name)
+char pass[] = "0123456789";   // your network password
 ```
 
-![][link-modify_wifi_information_through_arduino_ide]
-
-**3. Project Build 및 Upload**
-
-사용하는 Board, COM Port 선택 후, Build 및 Upload를 수행합니다.
-
-![][link-select_board_to_use_through_arduino_ide]
-
-![][link-select_com_port_to_use_through_arduino_ide]
-
-![][link-build_and_upload_through_arduino_ide]
 
 
+#### Step 4: Build and Upload
 
-<a name="Result"></a>
-## Step 4: 동작 예제 결과
 
-※ 본 문서는 Serial Terminal로 [TeraTerm][link-teraterm_download]을 사용합니다.
+1. After completing the configuration, click Verify button.
 
-Terminal Program으로 WizFi360가 AP(무선 공유기)에 접속하고, SSID, BSSID 등의 정보가 출력되는 것을 확인 할 수 있습니다.
+![][link-click_verify_button_1]
 
-![][link-result_example_connect_wpa_through_teraterm]
+2. When the build is completed, click Upload button to upload the firmware to the Arduino Mega 2560.
+
+![][link-click_upload_button_1]
 
 
 
-[link-connect_wpa]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/ConnectWPA/ConnectWPA.ino
-[link-scan_networks]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/ScanNetworks/ScanNetworks.ino
-[link-thing_speak]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/Thingspeak/Thingspeak.ino
-[link-udp_ntp_client]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/UdpNTPClient/UdpNTPClient.ino
-[link-udp_send_receive]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/UdpSendReceive/UdpSendReceive.ino
-[link-web_client]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/WebClient/WebClient.ino
-[link-web_client_repeating]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/WebClientRepeating/WebClientRepeating.ino
-[link-web_client_ssl]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/WebClientSSL/WebClientSSL.ino
-[link-web_server]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/WebServer/WebServer.ino
-[link-web_server_ap]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/WebServerAP/WebServerAP.ino
-[link-web_server_led]: https://github.com/GiungKim/wizfi360_arduino_nepes/blob/master/examples/WebServerLed/WebServerLed.ino
-[link-wizfi360-evb-shield]: https://wizwiki.net/wiki/doku.php/products:wizfi360:board:wizfi360-evb:start
-[link-arduino_mega_2560]: https://store.arduino.cc/usa/mega-2560-r3
-[link-required_item]: https://github.com/GiungKim/images/blob/master/wizfi360_arduino_nepes/required_item.png
-[link-arduino_ide_download]: https://www.arduino.cc/en/main/software
-[link-set_wizfi360_evb_shield_dip_switch_and_connect_arduino_mega_2560]: https://github.com/GiungKim/images/blob/master/wizfi360_arduino_nepes/set_wizfi360_evb_shield_dip_switch_and_connect_arduino_mega_2560.png
-[link-device_management]: https://github.com/GiungKim/images/blob/master/wizfi360_arduino_nepes/device_menagement.png
-[link-manually_install_drivers_on_windows]: https://www.arduino.cc/en/Guide/DriverInstallation
-[link-wizFi360 arduino library_download]: https://codeload.github.com/GiungKim/wizfi360_arduino_nepes/zip/master
-[link-modify_wifi_information_through_arduino_ide]: https://github.com/GiungKim/images/blob/master/wizfi360_arduino_nepes/modify_wifi_information_through_arduino_ide.png
-[link-select_board_to_use_through_arduino_ide]: https://github.com/GiungKim/images/blob/master/wizfi360_arduino_nepes/select_board_to_use_through_arduino_ide.png
-[link-select_com_port_to_use_through_arduino_ide]: https://github.com/GiungKim/images/blob/master/wizfi360_arduino_nepes/select_com_port_to_use_through_arduino_ide.png
-[link-build_and_upload_through_arduino_ide]: https://github.com/GiungKim/images/blob/master/wizfi360_arduino_nepes/build_and_upload_through_arduino_ide.png
-[link-teraterm_download]: https://osdn.net/projects/ttssh2/releases/
-[link-result_example_connect_wpa_through_teraterm]: https://github.com/GiungKim/images/blob/master/wizfi360_arduino_nepes/result_example_connect_wpa_through_teraterm.png
+#### Step 5: Run
+
+1. Connect to the serial COM port of Arduino Mega 2560 with Tera Term.
+
+![][link-connect_to_serial_com_port_1]
+
+2. If the example works normally on Arduino Mega 2560, you can see the Wi-Fi connection log and infomation such as SSID, BSSID, etc.
+
+![][link-see_wi-fi_connection_log_and_infomation_such_as_ssid_bssid_etc_on_arduino_mega_2560]
+
+
+
+<a name="using_wizfi360_evb_pico"></a>
+### Using WizFi360-EVB-Pico
+
+
+
+#### Step 1: Prepare software
+
+The following serial terminal program is required for example test, download and install from below link.
+
+- [**Tera Term**][link-tera_term]
+
+
+
+#### Step 2: Prepare hardware
+
+1. Connect WizFi360-EVB-Pico to desktop or laptop using 5 pin micro USB cable.
+
+
+
+#### Step 3: Setup Example
+
+To test the example, minor settings shall be done in code.
+
+1. Setup device configuration according to device you use.
+
+Serial port configuration is different depending on the board used.
+
+- Arduino Mega 2560 : ARDUINO_MEGA_2560
+- WizFi360-EVB-Pico : WIZFI360_EVB_PICO
+
+```cpp
+// setup according to the device you use
+#define WIZFI360_EVB_PICO
+```
+
+2. Setup Wi-Fi configuration.
+
+```cpp
+/* Wi-Fi info */
+char ssid[] = "wiznet";       // your network SSID (name)
+char pass[] = "0123456789";   // your network password
+```
+
+
+
+#### Step 4: Build and Upload
+
+1. After completing the configuration, click Verify button.
+
+![][link-click_verify_button_2]
+
+2. When the build is completed, click Upload button to upload the firmware to the WizFi360-EVB-Pico.
+
+![][link-click_upload_button_2]
+
+
+
+#### Step 5: Run
+
+1. Connect to the serial COM port of WizFi360-EVB-Pico with Tera Term.
+
+![][link-connect_to_serial_com_port_2]
+
+2. If the example works normally on WizFi360-EVB-Pico, you can see the Wi-Fi connection log and infomation such as SSID, BSSID, etc.
+
+![][link-see_wi-fi_connection_log_and_infomation_such_as_ssid_bssid_etc_on_wizfi360-evb-pico]
+
+
+
+<!--
+Link
+-->
+
+[link-wizfi360]: https://docs.wiznet.io/Product/Wi-Fi-Module/WizFi360
+[link-arduino_ide]: https://www.arduino.cc/en/software
+[link-add_boards_manager_urls]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/add_boards_manager_urls.png
+[link-wizfi360-evb-shield]: https://docs.wiznet.io/Product/Wi-Fi-Module/WizFi360/wizfi360_evb_shield
+[link-arduino_mega_2560]: https://store.arduino.cc/collections/boards/products/arduino-mega-2560-rev3
+[link-wizfi360-evb-shield_arduino_mega_2560_main]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/wizfi360-evb-shield_arduino_mega_2560_main.png
+[link-wizfi360-evb-pico]: https://docs.wiznet.io/Product/Open-Source-Hardware/wizfi360-evb-pico
+[link-wizfi360-evb-pico_main]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/wizfi360-evb-pico_main.png
+[link-connectwpa]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/ConnectWPA
+[link-scannetworks]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/ScanNetworks
+[link-thingspeak]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/Thingspeak
+[link-udpntpclient]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/UdpNTPClient
+[link-udpsendreceive]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/UdpSendReceive
+[link-webclient]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/WebClient
+[link-webclientrepeating]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/WebClientRepeating
+[link-webclientssl]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/WebClientSSL
+[link-webserver]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/WebServer
+[link-webserverap]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/WebServerAP
+[link-webserverled]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/WebServerLed
+[link-tera_term]: https://osdn.net/projects/ttssh2/releases/
+[link-connect_wizfi360-evb-shield_and_arduino_mega_2560_with_jumper_cable]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/connect_wizfi360-evb-shield_and_arduino_mega_2560_with_jumper_cable.png
+[link-click_verify_button_1]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/click_verify_button_1.png
+[link-click_upload_button_1]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/click_upload_button_1.png
+[link-connect_to_serial_com_port_1]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/connect_to_serial_com_port_1.png
+[link-see_wi-fi_connection_log_and_infomation_such_as_ssid_bssid_etc_on_arduino_mega_2560]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/see_wi-fi_connection_log_and_infomation_such_as_ssid_bssid_etc_on_arduino_mega_2560.png
+[link-click_verify_button_2]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/click_verify_button_2.png
+[link-click_upload_button_2]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/click_upload_button_2.png
+[link-connect_to_serial_com_port_2]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/connect_to_serial_com_port_2.png
+[link-see_wi-fi_connection_log_and_infomation_such_as_ssid_bssid_etc_on_wizfi360-evb-pico]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/see_wi-fi_connection_log_and_infomation_such_as_ssid_bssid_etc_on_wizfi360-evb-pico.png
