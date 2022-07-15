@@ -45,7 +45,7 @@ https://github.com/earlephilhower/arduino-pico/releases/download/global/package_
 <a name="hardware_requirements"></a>
 ## Hardware requirements
 
-WizFi360 Arduino Library & Examples supports two boards: **WizFi360-EVB-Shield**/**Arduino Mega 2560** and **WizFi360-EVB-Pico**.
+WizFi360 Arduino Library & Examples supports two boards: **WizFi360-EVB-Shield** & **Arduino Mega 2560** and **WizFi360-EVB-Pico**.
 
 With the WizFi360-EVB-Shield & Arduino Mega 2560, WizFi360-EVB-Shield is a development board for experiment, test and verification of WizFi360. WizFi360-EVB-Shield can also be used as an Arduino shield.
 
