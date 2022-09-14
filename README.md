@@ -44,8 +44,8 @@ The evaluation board supported by each branch is different, so refer to the foll
 
 | Evaluation board                        | Branch                                             |
 | :-------------------------------------: | :------------------------------------------------: |
-| WizFi360-EVB-Shield & Arduino Mega 2560 | [main](link-branch_main)                           |
-| WizFi360-EVB-Pico                       | [WizFi360-EVB-Pico](link-branch_wizfi360-evb-pico) |
+| WizFi360-EVB-Shield & Arduino Mega 2560 | [main][link-branch_main]                           |
+| WizFi360-EVB-Pico                       | [WizFi360-EVB-Pico][link-branch_wizfi360-evb-pico] |
 
 
 
