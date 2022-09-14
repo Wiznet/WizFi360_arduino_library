@@ -11,7 +11,7 @@
 #include "WizFi360.h"
 
 // setup according to the device you use
-#define ARDUINO_MEGA_2560
+#define WIZFI360_EVB_PICO
 
 // Emulate Serial1 on pins 6/7 if not present
 #ifndef HAVE_HWSERIAL1
