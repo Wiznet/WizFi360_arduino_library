@@ -142,7 +142,7 @@ int WiFiUDP::read()
 	
     // Read the data and handle the timeout condition
 	if (! WizFi360Drv::getData(_sock, &b, false, &connClose))
-      return -1;  // Timeout occured
+      return -1;  // Timeout occurred
 
 	return b;
 }
