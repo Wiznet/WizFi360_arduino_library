@@ -897,7 +897,9 @@ bool WizFi360Drv::sendDataUdp(uint8_t sock, const char* host, uint16_t port, con
 
 void WizFi360Drv::getRemoteIpAddress(IPAddress& ip)
 {
-	ip = _remoteIp;
+	ip_addr_t addr;
+	IP_ADDR4(&addr, _remoteIp[0], _remoteIp[1], _remoteIp[2], _remoteIp[3]);
+	ip = addr;
 }
 
 uint16_t WizFi360Drv::getRemotePort()
