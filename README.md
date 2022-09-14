@@ -30,7 +30,7 @@ It is necessary to add a package to use the evaluation board based on RP2040, an
 
 2. Open Preferences
 
-3. Add next link to Addtional Boards Manager URLs
+3. Add next link to Additional Boards Manager URLs
 
 ```
 https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
@@ -175,7 +175,7 @@ char pass[] = "0123456789";   // your network password
 
 ![][link-connect_to_serial_com_port_1]
 
-2. If the example works normally on Arduino Mega 2560, you can see the Wi-Fi connection log and infomation such as SSID, BSSID, etc.
+2. If the example works normally on Arduino Mega 2560, you can see the Wi-Fi connection log and information such as SSID, BSSID, etc.
 
 ![][link-see_wi-fi_connection_log_and_infomation_such_as_ssid_bssid_etc_on_arduino_mega_2560]
 
@@ -244,7 +244,7 @@ char pass[] = "0123456789";   // your network password
 
 ![][link-connect_to_serial_com_port_2]
 
-2. If the example works normally on WizFi360-EVB-Pico, you can see the Wi-Fi connection log and infomation such as SSID, BSSID, etc.
+2. If the example works normally on WizFi360-EVB-Pico, you can see the Wi-Fi connection log and information such as SSID, BSSID, etc.
 
 ![][link-see_wi-fi_connection_log_and_infomation_such_as_ssid_bssid_etc_on_wizfi360-evb-pico]
 

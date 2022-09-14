@@ -106,7 +106,7 @@ void WizFi360Drv::wifiDriverInit(Stream *wizfi360Serial)
 	}
 	else
 	{
-		LOGINFO1(F("Initilization successful -"), fwVersion);
+		LOGINFO1(F("Initialization successful -"), fwVersion);
 	}
 }
 
@@ -824,7 +824,7 @@ bool WizFi360Drv::sendData(uint8_t sock, const uint8_t *data, uint16_t len)
     return true;
 }
 
-// Overrided sendData method for __FlashStringHelper strings
+// Override sendData method for __FlashStringHelper strings
 bool WizFi360Drv::sendData(uint8_t sock, const __FlashStringHelper *data, uint16_t len, bool appendCrLf)
 {
 	LOGDEBUG2(F("> sendData:"), sock, len);
