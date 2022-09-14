@@ -373,7 +373,9 @@ void WizFi360Drv::getIpAddress(IPAddress& ip)
 		token = strtok(NULL, ".");
 		_localIp[3] = atoi(token);
 
-		ip = _localIp;
+		ip_addr_t addr;
+		IP_ADDR4(&addr, _localIp[0], _localIp[1], _localIp[2], _localIp[3]);
+		ip = addr;
 	}
 }
 
@@ -396,7 +398,9 @@ void WizFi360Drv::getIpAddressAP(IPAddress& ip)
 		token = strtok(NULL, ".");
 		_localIp[3] = atoi(token);
 
-		ip = _localIp;
+		ip_addr_t addr;
+		IP_ADDR4(&addr, _localIp[0], _localIp[1], _localIp[2], _localIp[3]);
+		ip = addr;
 	}
 }
 
