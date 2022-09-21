@@ -22,7 +22,7 @@ Before starting, download and install the Arduino IDE from the link below.
 
 - [Arduino IDE][link-arduino_ide]
 
-Additionally, if you are using WizFi360-EVB-Pico rather than WizFi360-EVB-Shield & Arduino Mega 2560, minor settings are required in the Arduino IDE and use branch WizFi360-EVB-Pico which supports WizFi360-EVB-Pico.
+Additionally, if you are using WizFi360-EVB-Pico rather than WizFi360-EVB-Shield & Arduino Mega 2560, minor settings are required in the Arduino IDE.
 
 It is necessary to add a package to use the evaluation board based on RP2040, and follows below steps to setup.
 
@@ -39,13 +39,6 @@ https://github.com/earlephilhower/arduino-pico/releases/download/global/package_
 ![][link-add_boards_manager_urls]
 
 4. Click the OK button to complete the setup
-
-The evaluation board supported by each branch is different, so refer to the following and use the branch.
-
-| Evaluation board                        | Branch                                             |
-| :-------------------------------------: | :------------------------------------------------: |
-| WizFi360-EVB-Shield & Arduino Mega 2560 | [main][link-branch_main]                           |
-| WizFi360-EVB-Pico                       | [WizFi360-EVB-Pico][link-branch_wizfi360-evb-pico] |
 
 
 
@@ -257,8 +250,6 @@ Link
 [link-wizfi360]: https://docs.wiznet.io/Product/Wi-Fi-Module/WizFi360
 [link-arduino_ide]: https://www.arduino.cc/en/software
 [link-add_boards_manager_urls]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/add_boards_manager_urls.png
-[link-branch_main]: https://github.com/Wiznet/WizFi360_arduino_library/tree/main
-[link-branch_wizfi360-evb-pico]: https://github.com/Wiznet/WizFi360_arduino_library/tree/WizFi360-EVB-Pico
 [link-wizfi360-evb-shield]: https://docs.wiznet.io/Product/Wi-Fi-Module/WizFi360/wizfi360_evb_shield
 [link-arduino_mega_2560]: https://store.arduino.cc/collections/boards/products/arduino-mega-2560-rev3
 [link-wizfi360-evb-shield_arduino_mega_2560_main]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/wizfi360-evb-shield_arduino_mega_2560_main.png
