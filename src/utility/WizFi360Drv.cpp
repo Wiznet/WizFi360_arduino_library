@@ -373,8 +373,14 @@ void WizFi360Drv::getIpAddress(IPAddress& ip)
 		token = strtok(NULL, ".");
 		_localIp[3] = atoi(token);
 
-		ip = _localIp;
-	}
+#if defined(ARDUINO_MEGA_2560)
+        ip = _localIp;
+#elif defined(WIZFI360_EVB_PICO)
+        ip_addr_t addr;
+        IP_ADDR4(&addr, _localIp[0], _localIp[1], _localIp[2], _localIp[3]);
+        ip = addr;
+#endif
+    }
 }
 
 void WizFi360Drv::getIpAddressAP(IPAddress& ip)
@@ -396,8 +402,14 @@ void WizFi360Drv::getIpAddressAP(IPAddress& ip)
 		token = strtok(NULL, ".");
 		_localIp[3] = atoi(token);
 
-		ip = _localIp;
-	}
+#if defined(ARDUINO_MEGA_2560)
+        ip = _localIp;
+#elif defined(WIZFI360_EVB_PICO)
+        ip_addr_t addr;
+        IP_ADDR4(&addr, _localIp[0], _localIp[1], _localIp[2], _localIp[3]);
+        ip = addr;
+#endif
+    }
 }
 
 
@@ -893,7 +905,13 @@ bool WizFi360Drv::sendDataUdp(uint8_t sock, const char* host, uint16_t port, con
 
 void WizFi360Drv::getRemoteIpAddress(IPAddress& ip)
 {
-	ip = _remoteIp;
+#if defined(ARDUINO_MEGA_2560)
+    ip = _localIp;
+#elif defined(WIZFI360_EVB_PICO)
+    ip_addr_t addr;
+    IP_ADDR4(&addr, _localIp[0], _localIp[1], _localIp[2], _localIp[3]);
+    ip = addr;
+#endif
 }
 
 uint16_t WizFi360Drv::getRemotePort()
