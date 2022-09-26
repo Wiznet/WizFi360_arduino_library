@@ -76,6 +76,7 @@ For detailed information about each board, refer to the links below.
 Examples are available at `WizFi360_arduino_library/examples/` directory. As of now, following examples are provided.
 
 - [**ConnectWPA**][link-connectwpa]
+- [**MqttClient**][link-mqttclient]
 - [**ScanNetworks**][link-scannetworks]
 - [**Thingspeak**][link-thingspeak]
 - [**UdpNTPClient**][link-udpntpclient]
@@ -265,6 +266,7 @@ Link
 [link-wizfi360-evb-pico]: https://docs.wiznet.io/Product/Open-Source-Hardware/wizfi360-evb-pico
 [link-wizfi360-evb-pico_main]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/wizfi360-evb-pico_main.png
 [link-connectwpa]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/ConnectWPA
+[link-mqttclient]: https://github.com/Wiznet/WizFi360_arduino_library/tree/mqtt/examples/MqttClient
 [link-scannetworks]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/ScanNetworks
 [link-thingspeak]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/Thingspeak
 [link-udpntpclient]: https://github.com/Wiznet/WizFi360_arduino_library/tree/master/examples/UdpNTPClient
