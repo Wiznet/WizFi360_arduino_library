@@ -38,9 +38,15 @@ https://github.com/earlephilhower/arduino-pico/releases/download/global/package_
 
 ![][link-add_boards_manager_urls]
 
-4. Click the OK button to complete the setup
+4. Open Boards Manager
 
-The evaluation board supported by each branch is different, so refer to the following and use the branch.
+5. Install board support package
+
+Search and install **Earle F. Philhower's Raspberry Pico/RP2040** board support package.
+
+![][link-install_board_support_package]
+
+※ **The evaluation board supported by each branch is different**, so refer to the following and use the branch.
 
 | Evaluation board                        | Branch                                             |
 | :-------------------------------------: | :------------------------------------------------: |
@@ -257,6 +263,7 @@ Link
 [link-wizfi360]: https://docs.wiznet.io/Product/Wi-Fi-Module/WizFi360
 [link-arduino_ide]: https://www.arduino.cc/en/software
 [link-add_boards_manager_urls]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/add_boards_manager_urls.png
+[link-install_board_support_package]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/install_board_support_package.png
 [link-branch_main]: https://github.com/Wiznet/WizFi360_arduino_library/tree/main
 [link-branch_wizfi360-evb-pico]: https://github.com/Wiznet/WizFi360_arduino_library/tree/WizFi360-EVB-Pico
 [link-wizfi360-evb-shield]: https://docs.wiznet.io/Product/Wi-Fi-Module/WizFi360/wizfi360_evb_shield
