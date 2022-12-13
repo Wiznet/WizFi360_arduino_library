@@ -1,2 +1,8 @@
 1.0.0 (2020-05-13)
   * First stable release
+
+1.0.1 (2022-07-12)
+  * Add a supported evaluation board - WizFi360-EVB-Pico
+
+1.0.2 (2022-12-13)
+  * Add MQTT example for WizFi360-EVB-Shield & Arduino Mega 2560

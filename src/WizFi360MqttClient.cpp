@@ -428,10 +428,12 @@ bool MQTTClient::unsubscribe(const char topic[]) {
 }
 
 bool MQTTClient::loop() {
+#if 0
   // return immediately if not connected
   if (!this->connected()) {
     return false;
   }
+#endif
 
   // get available bytes on the network
   auto available = (size_t)this->netClient->available();

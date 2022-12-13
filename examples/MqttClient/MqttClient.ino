@@ -95,24 +95,11 @@ void setup() {
 void loop() {
     client.loop();
 
-    delay(10);
-
     // publish a message roughly every second.
     if (millis() - lastMillis > (1000 * 10)) // 10 seconds
     {
         lastMillis = millis();
         client.publish("/hello", "world");
-    }
-
-    // if the broker's disconnected, stop the client
-    if (!client.connected())
-    {
-        Serial.println();
-        Serial.println("Disconnecting from broker...");
-        client.disconnect();
-
-        // do nothing forevermore
-        while (true);
     }
 }
 
