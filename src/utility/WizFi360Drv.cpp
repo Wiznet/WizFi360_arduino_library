@@ -293,7 +293,7 @@ uint8_t WizFi360Drv::getConnectionStatus()
 			1: WizFi360 runs as server
 */
 
-	char buf[10];
+	char buf[10] = {0,};
 	if(!sendCmdGet(F("AT+CIPSTATUS"), F("STATUS:"), F("\r\n"), buf, sizeof(buf)))
 		return WL_NO_SHIELD;
 
@@ -315,7 +315,7 @@ uint8_t WizFi360Drv::getClientState(uint8_t sock)
 	char findBuf[20];
 	sprintf_P(findBuf, PSTR("+CIPSTATUS:%d,"), sock);
 
-	char buf[10];
+	char buf[10] = {0,};
 	if (sendCmdGet(F("AT+CIPSTATUS"), findBuf, ",", buf, sizeof(buf)))
 	{
 		LOGDEBUG(F("Connected"));
@@ -449,7 +449,7 @@ int32_t WizFi360Drv::getCurrentRSSI()
 	LOGDEBUG(F("> getCurrentRSSI"));
 
     int ret=0;
-	char buf[10];
+	char buf[10] = {0,};
 	sendCmdGet(F("AT+CWJAP?"), F(",-"), F("\r\n"), buf, sizeof(buf));
 
 	if (isDigit(buf[0])) {
