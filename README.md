@@ -46,7 +46,7 @@ Search and install **Earle F. Philhower's Raspberry Pico/RP2040** board support 
 
 ![][link-install_board_support_package]
 
-¡Ø **The evaluation board supported by each branch is different**, so refer to the following and use the branch.
+â€» **The evaluation board supported by each branch is different**, so refer to the following and use the branch.
 
 | Evaluation board                        | Branch                                             |
 | :-------------------------------------: | :------------------------------------------------: |
