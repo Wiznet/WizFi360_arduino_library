@@ -78,7 +78,7 @@ void setup() {
 
   // you're connected now, so print out the data
   Serial.println("You're connected to the network");
-  
+
   printWifiStatus();
 
   Serial.println();
@@ -86,21 +86,21 @@ void setup() {
   client.begin(broker, net);
   if (client.connect("arduino", "public", "public"))
   {
-      Serial.println("Connected to broker");
-      client.subscribe("/world");
-      client.onMessage(messageReceived);
+    Serial.println("Connected to broker");
+    client.subscribe("/world");
+    client.onMessage(messageReceived);
   }
 }
 
 void loop() {
-    client.loop();
+  client.loop();
 
-    // publish a message roughly every second.
-    if (millis() - lastMillis > (1000 * 10)) // 10 seconds
-    {
-        lastMillis = millis();
-        client.publish("/hello", "world");
-    }
+  // publish a message roughly every second.
+  if (millis() - lastMillis > (1000 * 10)) // 10 seconds
+  {
+    lastMillis = millis();
+    client.publish("/hello", "world");
+  }
 }
 
 void printWifiStatus() {
@@ -121,10 +121,10 @@ void printWifiStatus() {
 }
 
 void messageReceived(String &topic, String &payload) {
-    Serial.println(topic + " - " + payload.length() + "," + payload);
+  Serial.println(topic + " - " + payload.length() + "," + payload);
 
-    // Note: Do not use the client in the callback to publish, subscribe or
-    // unsubscribe as it may cause deadlocks when other things arrive while
-    // sending and receiving acknowledgments. Instead, change a global variable,
-    // or push to a queue and handle it in the loop after calling `client.loop()`.
+  // Note: Do not use the client in the callback to publish, subscribe or
+  // unsubscribe as it may cause deadlocks when other things arrive while
+  // sending and receiving acknowledgments. Instead, change a global variable,
+  // or push to a queue and handle it in the loop after calling `client.loop()`.
 }

@@ -82,7 +82,7 @@ For detailed information about each board, refer to the links below.
 Examples are available at `WizFi360_arduino_library/examples/` directory. As of now, following examples are provided.
 
 - [**ConnectWPA**][link-connectwpa]
-- [**MqttClient**][link-mqttclient] (not supported - WizFi360-EVB-Pico)
+- [**MqttClient**][link-mqttclient]
 - [**ScanNetworks**][link-scannetworks]
 - [**Thingspeak**][link-thingspeak]
 - [**UdpNTPClient**][link-udpntpclient]

@@ -376,6 +376,11 @@ static lwmqtt_err_t lwmqtt_cycle_until(lwmqtt_client_t *client, lwmqtt_packet_ty
 
   // loop until timeout has been reached
   do {
+#if 0
+    // wait/unblock for some time (may otherwise fail since
+    // the wifi task cannot provide the data)
+    delay(1);
+#endif
     // do one cycle
     lwmqtt_err_t err = lwmqtt_cycle(client, &read, packet_type);
     if (err != LWMQTT_SUCCESS) {
