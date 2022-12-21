@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 #include "packet.h"
 
 void lwmqtt_init(lwmqtt_client_t *client, uint8_t *write_buf, size_t write_buf_size, uint8_t *read_buf,
