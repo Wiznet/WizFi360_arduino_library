@@ -3,3 +3,9 @@
 
 1.0.1 (2022-07-12)
   * Add a supported evaluation board - WizFi360-EVB-Pico
+
+1.0.2 (2022-12-21)
+  * Add MQTT example for WizFi360-EVB-Pico
+
+1.1.2 (2022-12-21)
+  * Change with separate version for WizFi360-EVB-Pico
