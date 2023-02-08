@@ -20,7 +20,7 @@ Please note that in this guide examples were configured and tested using **Ardui
 
 Before starting, download and install the Arduino IDE from the link below.
 
-- [Arduino IDE][link-arduino_ide]
+- [**Arduino IDE**][link-arduino_ide]
 
 Additionally, if you are using WizFi360-EVB-Pico rather than WizFi360-EVB-Shield & Arduino Mega 2560, minor settings are required in the Arduino IDE and use branch WizFi360-EVB-Pico which supports WizFi360-EVB-Pico.
 
