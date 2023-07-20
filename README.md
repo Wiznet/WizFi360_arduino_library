@@ -83,6 +83,7 @@ Examples are available at `WizFi360_arduino_library/examples/` directory. As of 
 
 - [**ConnectWPA**][link-connectwpa]
 - [**MqttClient**][link-mqttclient]
+- [**OpenAIBasic**][link-openaibasic]
 - [**ScanNetworks**][link-scannetworks]
 - [**Thingspeak**][link-thingspeak]
 - [**UdpNTPClient**][link-udpntpclient]
@@ -274,6 +275,7 @@ Link
 [link-wizfi360-evb-pico_main]: https://github.com/Wiznet/WizFi360_arduino_library/blob/main/static/images/wizfi360-evb-pico_main.png
 [link-connectwpa]: https://github.com/Wiznet/WizFi360_arduino_library/tree/main/examples/ConnectWPA
 [link-mqttclient]: https://github.com/Wiznet/WizFi360_arduino_library/tree/main/examples/MqttClient
+[link-openaibasic]: https://github.com/Wiznet/WizFi360_arduino_library/tree/openai/examples/OpenAIBasic
 [link-scannetworks]: https://github.com/Wiznet/WizFi360_arduino_library/tree/main/examples/ScanNetworks
 [link-thingspeak]: https://github.com/Wiznet/WizFi360_arduino_library/tree/main/examples/Thingspeak
 [link-udpntpclient]: https://github.com/Wiznet/WizFi360_arduino_library/tree/main/examples/UdpNTPClient
