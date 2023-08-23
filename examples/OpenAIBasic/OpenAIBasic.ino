@@ -1,8 +1,8 @@
 /*
- WizFi360 example: WebClient
+ WizFi360 example: OpenAIBasic
 
- This sketch connects to google website using a WizFi360 module to
- perform a simple web search.
+ This sketch connects to openai website using a WizFi360 module to
+ perform a simple ChatGPT.
 */
 
 #include "WizFi360.h"
