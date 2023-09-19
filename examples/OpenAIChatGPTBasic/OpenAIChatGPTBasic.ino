@@ -1,5 +1,5 @@
 /*
- WizFi360 example: OpenAIBasic
+ WizFi360 example: OpenAIChatGPTBasic
 
  This sketch connects to openai website using a WizFi360 module to
  perform a simple ChatGPT.

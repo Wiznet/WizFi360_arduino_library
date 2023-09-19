@@ -11,4 +11,7 @@
   * Change to separate version for WizFi360-EVB-Pico
 
 1.1.3 (2023-07-20)
-  * Add OpenAI basic example for WizFi360-EVB-Pico
+  * Add OpenAI ChatGPT basic example for WizFi360-EVB-Pico
+
+1.1.4 (2023-09-19)
+  * Add OpenAI DALL-E basic example for WizFi360-EVB-Pico
